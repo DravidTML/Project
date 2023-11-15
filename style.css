@@ -50,3 +50,7 @@ button:hover{
     background-color: darkseagreen;
     cursor: pointer;
 }
+
+body{
+    padding: 24px;
+}
