@@ -18,12 +18,11 @@
         </li>
     </ol>
     
-    <p v-if="text.includes(selectedFood)">The text includes the word '{{ selectedFood }}'
-        <img :src="selectedImageUrl">
-    </p>
-
+    <div v-if="text.includes(selectedFood)">
+        <p>text includes the word '{{ selectedFood }}'</p>
+        <img :src="selectedImageUrl" alt="selectedFood">
+    </div>
     <p v-else>The word '{{ selectedFood }}' is not found in the text</p>
-
     <p v-show="showText">
         {{ text }}
     </p>

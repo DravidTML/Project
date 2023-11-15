@@ -8,15 +8,16 @@
 
 #app {
     border: dashed black 1px;
+    display: flex;
     width: 300px;
-    padding: 0 20px 20px 20px;
+    padding: 16px;
     font-weight: bold;
-    gap: 8px;
+    flex-direction: column;
+    gap: 16px;
 }
 
 #app  li {
-    padding-left: 6px;
-    border-radius: 5px;
+    border-radius: 8px;
     width: 80px;
 }
 
@@ -24,18 +25,22 @@
     list-style-type: none;
     margin: 0;
     padding: 0;
+    gap:8px;
 }
 
 li:hover{
+    padding-left: 8px;
     cursor: pointer;
     background-color: rgb(224, 224, 224);
 }
 
-#app > p {
+#app > div {
+    display: flex;
+    flex-direction: column;
     gap: 8px;
 }
 
-#app > p > img {
+#app > div > img {
     width: 50%;
 }
 
