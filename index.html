@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>'v-if' pizza example</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" type="image/x-icon" href="/images/Monkey.jpeg">
+</head>
+<body>
+
+<h1>Example with text check</h1>
+
+<p>In this example 'v-if' uses a method 'includes()' instead of a comparison operator.</p>
+
+<div id="app">
+    <ol>
+        <li v-for="food in manyFoods" @click="updateSelectedFood(food.name)">
+            {{ food.name }}
+        </li>
+    </ol>
+    
+    <p v-if="text.includes(selectedFood)">The text includes the word '{{ selectedFood }}'
+        <img :src="selectedImageUrl">
+    </p>
+
+    <p v-else>The word '{{ selectedFood }}' is not found in the text</p>
+
+    <p v-show="showText">
+        {{ text }}
+    </p>
+    <button @click="toggleShowText">
+        {{ showText ? 'Hide Text' : 'Show Text' }}
+    </button>
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="/Vue.js"></script>
+</body>
+</html>
