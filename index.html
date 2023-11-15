@@ -1,15 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My Vue Project</title>
+  <title>Vue Dynamic Text and Image Example</title>
   <link rel="stylesheet" href="/style.css">
   <link rel="icon" type="image/x-icon" href="/images/vue.svg">
 </head>
 <body>
 
-<h1>Example with text check</h1>
+<header>
+  <h1>Vue Dynamic Text and Image Example</h1>
+</header>
 
-<p>In this example 'v-if' uses a method 'includes()' instead of a comparison operator.</p>
+<section>
+  <p>
+    Explore this Vue.js example showcasing dynamic text updates, image changes, and conditional visibility. 
+    The code uses the 'v-if' directive with the 'includes()' method for text checks, and demonstrates toggling 
+    text visibility along with updating selected food information.
+  </p>
+</section>
 
 <div id="app">
     <ol>
@@ -19,8 +27,8 @@
     </ol>
     
     <div v-if="text.includes(selectedFood)">
-        <p>text includes the word '{{ selectedFood }}'</p>
-        <img :src="selectedImageUrl" alt="selectedFood">
+        <p>Text includes the word '{{ selectedFood }}'</p>
+        <img :src="selectedImageUrl" alt="{{ selectedFood }}">
     </div>
     <p v-else>The word '{{ selectedFood }}' is not found in the text</p>
     <p v-show="showText">
@@ -33,5 +41,6 @@
 
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 <script src="/Vue.js"></script>
+
 </body>
 </html>
