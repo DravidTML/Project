@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.header {
+  padding: 16px;
+  background: #372aa877;
+  color: #f1f1f1;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  transition: background-color 0.5s ease;
+  z-index: 1000;
+}
+
+.content {
+  padding: 16px;
+  margin-top: 48px;
+}
+
+table, form, tr {
+  width: 100%;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 12px; /* Adjusted font size for input fields */
+  margin: 4px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: 16px; /* Adjusted font size for input fields */
+}
+
+td, th {
+  text-align: left;
+}
+
+button {
+  font-size: 16px; /* Default font size for buttons */
+  padding: 8px 16px;
+}
+
+@media (min-width: 768px) {
+  button {
+    font-size: 18px; /* Increase font size for desktop screens */
+  }
+  table {
+    max-width: 768px;
+    font-size: 18px; /* Increase font size for desktop screens */
+  }
+  input[type="text"],
+  input[type="number"] {
+    font-size: 18px; /* Adjusted font size for input fields on desktop screens */
+  }
+}
+
+@media (min-width: 992px) {
+  button {
+    font-size: 20px; /* Further increase font size for larger screens if needed */
+  }
+  table {
+    max-width: 992px;
+    font-size: 20px; /* Further increase font size for larger screens if needed */
+  }
+  input[type="text"],
+  input[type="number"] {
+    font-size: 20px; /* Further adjusted font size for input fields on larger screens */
+  }
+}
+
+@media (min-width: 1200px) {
+  button {
+    font-size: 22px; /* Further increase font size for larger screens if needed */
+  }
+  table {
+    max-width: 1200px;
+    font-size: 22px; /* Further increase font size for larger screens if needed */
+  }
+  input[type="text"],
+  input[type="number"] {
+    font-size: 22px; /* Further adjusted font size for input fields on larger screens */
+  }
+}
+
+@media (min-width: 600px) {
+  table {
+    max-width: 600px;
+  }
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+
+<div class="header" id="header">
+  <h2>Shoping list</h2>
+</div>
+
+<div class="content">
+  <div id="app">
+    <form @submit.prevent="submitForm">
+      <table>
+        <thead>
+          <tr>
+            <th v-for="(label, index) in columnLabels" :key="index">{{ label }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Rice</td>
+            <td>1100</td>
+            <td>3</td>
+          </tr>
+          <tr v-for="(inputRow, rowIndex) in formInputs" :key="rowIndex">
+            <td v-for="(input, colIndex) in inputRow" :key="colIndex">
+              <input v-model="input.value" :type="input.type">
+            </td>
+          </tr>
+        </tbody>
+      </table><br>
+      <button type="button" @click="addInputRow">+</button><br><br>
+      <button type="submit">Submit Form</button>
+      <button type="button" @click="clearForm">Clear Form</button>
+    </form>
+  </div>
+</div>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      columnLabels: ['Name', 'Amount', 'Quantity'],
+      formInputs:[]
+    },
+    methods: {
+      addInputRow() {
+        const newRow = this.columnLabels.map(label => ({ value: '', type: label === 'Name' ? 'text' : 'number' }));
+        this.formInputs.push(newRow);
+      },
+      clearForm() {
+        this.formInputs = [];
+      },
+      submitForm() {
+        // Extract and log submitted form data from tbody
+        const submittedData = Array.from(document.querySelectorAll('tbody tr')).map(tr =>
+          Array.from(tr.children).map(td => td.textContent || td.querySelector('input').value)
+        );
+
+        // Log the submitted form data
+        console.log('Form submitted:', submittedData);
+      }
+    }
+    });
+
+  window.onscroll = function() {myFunction()};
+  
+  var header = document.getElementById("header");
+  var headerOffset = header.offsetTop;
+  
+  function myFunction() {
+    if (window.pageYOffset > headerOffset) {
+      header.style.backgroundColor = "#372aa8";
+    } else {
+      header.style.backgroundColor = "#372aa877";
+    }
+  }
+</script>
+</body>
+</html>

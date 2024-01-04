@@ -1,46 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Vue Dynamic Text and Image Example</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Vue Journey</title>
   <link rel="stylesheet" href="/style.css">
   <link rel="icon" type="image/x-icon" href="/images/vue.svg">
 </head>
 <body>
 
 <header>
-  <h1>Vue Dynamic Text and Image Example</h1>
+  <h1>My Vue Journey Overview</h1>
 </header>
 
 <section>
   <p>
-    Explore this Vue.js example showcasing dynamic text updates, image changes, and conditional visibility. 
-    The code uses the 'v-if' directive with the 'includes()' method for text checks, and demonstrates toggling 
-    text visibility along with updating selected food information.
+    Welcome to my Vue.js landing page! This space serves as an introduction to my Vue.js projects and achievements.
+    As you explore, you'll discover the progress I've made on various projects created with Vue.js.
+    Be sure to check out the projects section for a detailed overview of my work.
   </p>
 </section>
 
-<div id="app">
-    <ol>
-        <li v-for="food in manyFoods" @click="updateSelectedFood(food.name)">
-            {{ food.name }}
-        </li>
-    </ol>
-    
-    <div v-if="text.includes(selectedFood)">
-        <p>Text includes the word '{{ selectedFood }}'</p>
-        <img :src="selectedImageUrl" alt="{{ selectedFood }}">
-    </div>
-    <p v-else>The word '{{ selectedFood }}' is not found in the text</p>
-    <p v-show="showText">
-        {{ text }}
-    </p>
-    <button @click="toggleShowText">
-        {{ showText ? 'Hide Text' : 'Show Text' }}
-    </button>
-</div>
-
-<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-<script src="/Vue.js"></script>
+<!-- Links to your Vue projects -->
+<section>
+  <h2>My Vue Projects:</h2>
+  <ul>
+    <li><a href="/Shoping List.html">Vue Shopping List</a></li>
+    <!-- Add more project links as needed -->
+  </ul>
+</section>
 
 </body>
 </html>
